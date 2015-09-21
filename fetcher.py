@@ -46,8 +46,18 @@ MAP_URLS = [
     'http://pathofexile.gamepedia.com/List_of_unique_maps',
 ]
 
+ALL_URLS = [ACCESSORIES_URLS, ARMOUR_URLS, WEAPON_URLS, FLASK_URLS, JEWEL_URLS, MAP_URLS]
 
-def fetch_all(urls):
+
+def fetch_all():
+    items = []
+
+    for urls in ALL_URLS:
+        items.append(fetch_group(urls))
+
+    return items
+
+def fetch_group(urls):
     return Pool().map(fetch, urls)
 
 
@@ -84,3 +94,6 @@ def fetch(url):
             items.append(item)
 
     return items
+
+items = fetch_all()
+print(items)
