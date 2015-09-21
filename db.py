@@ -1,7 +1,6 @@
 import json
 
 import os
-import fetch
 
 DB_PATH = os.getcwd() + '/db/items.json'
 
@@ -18,8 +17,6 @@ def save(items):
 
     file.close()
 
+
 def load():
     return json.load(open(DB_PATH, 'r'))
-
-
-save(fetch.fetch_all())
