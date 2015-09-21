@@ -68,7 +68,9 @@ def fetch(url):
     req = Request(url)
     req.add_header('User-Agent', UserAgent().random)
 
-    document = BeautifulSoup(urlopen(req).read(), 'html.parser')
+    conn = urlopen(req).read()
+    document = BeautifulSoup(conn, 'html.parser')
+    conn.close()
 
     for table in document.findAll('table', {'class': 'wikitable'}):
         for row in table.findAll('tr', {'id': True}):
@@ -96,5 +98,7 @@ def fetch(url):
 
             finally:
                 items.append(item)
+
+    document.decompose()
 
     return items

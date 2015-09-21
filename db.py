@@ -19,4 +19,10 @@ def save(items):
 
 
 def load():
-    return json.load(open(DB_PATH, 'r'))
+    file = open(DB_PATH, 'r')
+
+    items = json.load(file)
+
+    file.close()
+
+    return items
