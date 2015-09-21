@@ -94,6 +94,3 @@ def fetch(url):
             items.append(item)
 
     return items
-
-items = fetch_all()
-print(items)
