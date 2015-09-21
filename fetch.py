@@ -92,7 +92,9 @@ def fetch(url):
 
             except AttributeError:
                 print('ERROR parsing item', item)
+                item['description'] = []
 
-            items.append(item)
+            finally:
+                items.append(item)
 
     return items
