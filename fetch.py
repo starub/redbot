@@ -57,6 +57,7 @@ def fetch_all():
 
     return items
 
+
 def fetch_group(urls):
     return Pool().map(fetch, urls)
 
@@ -84,7 +85,8 @@ def fetch(url):
                 description = []
 
                 for modifier in columns[len(columns) - 1].div.findAll('span'):
-                    description.append(modifier.text)
+                    for text_line in modifier.stripped_strings:
+                        description.append(text_line)
 
                 item['description'] = description
 
